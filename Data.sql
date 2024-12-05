@@ -1,16 +1,16 @@
-INSERT INTO Branches (branch_name, branch_location, branch_contact)
+INSERT INTO Branches (branch_id, branch_name, branch_location, branch_contact)
 VALUES
-    ('TechZone Salaya', 'Salaya, Thailand', '0812345678'),
-    ('TechZone Bangkok', 'Bangkok, Thailand', '0823456789');
+    (1, 'TechZone Salaya', 'Salaya, Thailand', '0812345678'),
+    (2, 'TechZone Bangkok', 'Bangkok, Thailand', '0823456789');
 
-INSERT INTO Categories (category_name, warranty_period)
+INSERT INTO Categories (category_id, category_name, warranty_period)
 VALUES
-    ('Laptops', 24),
-    ('Smartphones', 12),
-    ('Keyboard', 6),
-    ('Mouse', 6),
-    ('GamingChair', 6),
-    ('Accessories', 1);
+    (1, 'Laptops', 24),
+    (2, 'Smartphones', 12),
+    (3, 'Keyboard', 6),
+    (4, 'Mouse', 6),
+    (5, 'GamingChair', 6),
+    (6, 'Accessories', 1);
 
 INSERT INTO Products (product_name, brand, price, stock, category_id, branch_id)
 VALUES
@@ -107,3 +107,51 @@ VALUES
     ('Wireless Charger', 'Belkin', 1490.00, 36, 6, 2),
     ('Power Bank 20000mAh', 'Xiaomi', 990.00, 90, 6, 2),
     ('Portable SSD 1TB', 'Samsung', 3590.00, 23, 6, 2);
+
+INSERT INTO Sales (sale_id, sale_date, total_price, branch_id)
+VALUES
+    -- TechZone Salaya
+    (1, '2024-12-01', 32467.00, 1),
+    (2, '2024-12-02', 46682.00, 1),
+    (3, '2024-12-05', 33970.00, 1),
+
+    -- TechZone Bangkok
+    (1, '2024-12-04', 15800.00, 2),
+    (2, '2024-12-07', 35970.00, 2),
+    (3, '2024-12-10', 54760.00, 2);
+
+INSERT INTO Sales_detail (sale_id, product_name, quantity, subtotal)
+VALUES
+    -- TechZone Salaya
+    (1, 'Razer Formula', 2, 17800.00),
+    (1, 'Secretlab Titan Evo', 1, 14900.00),
+    (3, 'ASUS ROG Spatha', 3, 17970.00),
+
+    -- TechZone Bangkok
+    (1, 'AndaSeat Kaiser', 2, 25800.00),
+    (3, 'Laptop Cooling Pad', 3, 5970.00),
+    (3, 'Logitech MX Master', 4, 14760.00);
+
+INSERT INTO Discounts (category_id, discount_percentage, start_date, end_date, branch_id)
+VALUES
+    -- TechZone Salaya
+    (1, 10, '2024-12-01', '2024-12-31', 1),
+    (5, 11, '2024-12-03', '2024-12-31', 1),
+    (6, 15, '2024-12-01', '2024-12-31', 1),
+
+    -- TechZone Bangkok
+    (2, 14, '2024-12-01', '2024-12-31', 2),
+    (4, 20, '2024-12-03', '2024-12-25', 2),
+    (3, 25, '2024-12-01', '2024-12-25', 2);
+
+INSERT INTO Stock_Transfers (product_name, from_branch_id, to_branch_id, transfer_quantity, transfer_date)
+VALUES
+    -- TechZone Salaya
+    ('AndaSeat Kaiser', 1, 2, 2, '2024-12-07'),
+    ('Laptop Cooling Pad', 1, 2, 3, '2024-12-08'),
+    ('Logitech MX Master', 1, 2, 5, '2024-12-10'),
+
+    -- TechZone Bangkok
+    ('Razer Formula', 2, 1, 1, '2024-12-10'),
+    ('Secretlab Titan Evo', 2, 1, 6, '2024-12-12'),
+    ('ASUS ROG Spatha', 2, 1, 8, '2024-12-14');
