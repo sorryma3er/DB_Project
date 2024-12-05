@@ -4,7 +4,7 @@ FROM products
 WHERE branch_id = 1;
 
 --check for MacBook Air
-SELECT stock, product_id
+SELECT stock
 FROM products
 WHERE branch_id = 2 AND product_name = 'MacBook Air';
 

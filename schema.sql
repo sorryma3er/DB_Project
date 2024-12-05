@@ -57,6 +57,16 @@ CREATE TABLE Stock_Transfers (
                                  transfer_date DATE NOT NULL
 );
 
+--refine
+ALTER TABLE sales_detail
+    ADD COLUMN branch_id INTEGER;
+
+ALTER TABLE sales_detail
+    ADD CONSTRAINT fk_branch
+        FOREIGN KEY (branch_id) REFERENCES branches(branch_id);
+
+
+
 
 
 
